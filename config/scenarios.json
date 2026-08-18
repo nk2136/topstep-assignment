@@ -1,0 +1,29 @@
+{
+  "_comment": "Test data lives here, not in source. `default` is the route the main happy-path test runs in depth (also used by validation and edge cases), overridable by environment variables - see README > Configuring what the suite tests. `scenarios` holds additional routes checked more lightly in find-trains.spec.ts; add a route or passenger mix here to widen that coverage, no code changes needed. Deliberately doesn't repeat the default route - that one's already covered in depth.",
+
+  "default": {
+    "from": "DAL",
+    "to": "NYP",
+    "departIn": 2,
+    "returnIn": 9,
+    "travelers": { "adults": 2, "children": 2 }
+  },
+
+  "scenarios": [
+    {
+      "name": "single traveler one way - Washington to Philadelphia",
+      "from": "WAS",
+      "to": "PHL",
+      "departIn": 5,
+      "travelers": { "adults": 1, "children": 0 }
+    },
+    {
+      "name": "two adults round trip - Philadelphia to Washington",
+      "from": "PHL",
+      "to": "WAS",
+      "departIn": 10,
+      "returnIn": 14,
+      "travelers": { "adults": 2, "children": 0 }
+    }
+  ]
+}
