@@ -1,0 +1,16 @@
+{
+ "source": "Yahoo Finance via yfinance, symbol NQ=F (continuous front-month, unadjusted)",
+ "downloaded_utc": "2026-11-13T02:02:16.144600+00:00",
+ "files": {
+  "NQ_1d.csv": [
+   "2016-11-14 00:00:00",
+   "2026-11-12 00:00:00",
+   2516
+  ],
+  "NQ_1h.csv": [
+   "2024-06-23 18:00:00-04:00",
+   "2026-11-12 20:00:00-05:00",
+   13708
+  ]
+ }
+}

@@ -1,0 +1,966 @@
+{
+ "run_utc": "20261113T0204Z",
+ "data": {
+  "source": "Yahoo Finance via yfinance, symbol NQ=F (continuous front-month, unadjusted)",
+  "downloaded_utc": "2026-11-13T02:02:16.144600+00:00",
+  "files": {
+   "NQ_1d.csv": [
+    "2016-11-14 00:00:00",
+    "2026-11-12 00:00:00",
+    2516
+   ],
+   "NQ_1h.csv": [
+    "2024-06-23 18:00:00-04:00",
+    "2026-11-12 20:00:00-05:00",
+    13708
+   ]
+  }
+ },
+ "settings": {
+  "is_perms": 1000,
+  "wf_perms": 200,
+  "seed": 7,
+  "cost_pts_per_side": 0.35,
+  "train_months": 12,
+  "in_sample": [
+   "2024-06-24 09:00:00-04:00",
+   "2025-05-30 15:00:00-04:00"
+  ],
+  "walk_forward_oos": [
+   "2025-06-02 09:00:00-04:00",
+   "2026-11-12 15:00:00-05:00"
+  ],
+  "configs_tested_N": 81
+ },
+ "regime_today": {
+  "as_of_daily_close": "2026-11-12",
+  "close": 28562.5,
+  "ema200": 28265.58,
+  "ema200_slope20": 110.93,
+  "adx14": 25.7,
+  "raw_label": "BULLISH",
+  "confirmed_regime": "FLAT"
+ },
+ "regime_day_counts": {
+  "in_sample": {
+   "BULLISH": 133,
+   "FLAT": 70,
+   "BEARISH": 26
+  },
+  "walk_forward": {
+   "BULLISH": 198,
+   "FLAT": 162
+  }
+ },
+ "cards": [
+  {
+   "name": "BULL_OPEN_DRIVE",
+   "regime": "BULLISH",
+   "why": "Strong first hour in an uptrend continues into the close (intraday momentum); late, under-positioned buyers pay.",
+   "grid": [
+    0.0,
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8
+   ],
+   "plateau_theta_IS": 0.8,
+   "rho_plateau": 0.61,
+   "pf_is_plateau": 1.222,
+   "pf_is_by_theta": [
+    1.027,
+    1.056,
+    1.007,
+    0.893,
+    1.011,
+    1.058,
+    1.115,
+    1.082,
+    1.362
+   ],
+   "p_is": 0.4476,
+   "pf_wf": 1.001,
+   "p_wf": 0.7065,
+   "p_wf_holm": 1.0,
+   "wf_thetas_chosen": [
+    0.8,
+    0.8,
+    0.8,
+    0.8,
+    0.8,
+    0.8,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.8,
+    0.8,
+    0.8
+   ],
+   "is_stats": {
+    "net_usd_1NQ": 14453.0,
+    "trades": 18,
+    "win_rate": 0.611,
+    "max_dd_usd_1NQ": 9492.0,
+    "worst_month": [
+     "2024-09",
+     -2333.0
+    ],
+    "longest_losing_streak": 4
+   },
+   "wf_stats": {
+    "net_usd_1NQ": 1396.0,
+    "trades": 61,
+    "win_rate": 0.492,
+    "max_dd_usd_1NQ": 25383.0,
+    "worst_month": [
+     "2026-03",
+     -20109.0
+    ],
+    "longest_losing_streak": 5
+   },
+   "wf_log_return": 0.0004,
+   "benchmark_wf_log_return": -0.0332,
+   "benchmark_wf_stats": {
+    "net_usd_1NQ": -14417.0,
+    "trades": 198,
+    "win_rate": 0.545,
+    "max_dd_usd_1NQ": 60300.0,
+    "worst_month": [
+     "2026-11",
+     -32509.0
+    ],
+    "longest_losing_streak": 7
+   },
+   "gates": {
+    "G1_in_sample": false,
+    "G2_is_permutation_p<0.01": false,
+    "G3_walk_forward_PF>1": true,
+    "G4_wf_permutation_p<0.05": false
+   },
+   "extra_checks": {
+    "holm_adjusted_p_wf<0.05": false,
+    "beats_intraday_buy_hold_after_costs": true,
+    "wf_trades>=20": true
+   },
+   "passes_all": false
+  },
+  {
+   "name": "BULL_PULLBACK_RSI",
+   "regime": "BULLISH",
+   "why": "Short-term dips inside an uptrend get bought back; impatient sellers demanding liquidity pay.",
+   "grid": [
+    15.0,
+    20.0,
+    25.0,
+    30.0,
+    35.0,
+    40.0,
+    45.0,
+    50.0,
+    55.0
+   ],
+   "plateau_theta_IS": 50.0,
+   "rho_plateau": 0.0,
+   "pf_is_plateau": 0.927,
+   "pf_is_by_theta": [
+    0.944,
+    0.835,
+    0.854,
+    0.837,
+    0.87,
+    0.902,
+    0.94,
+    0.918,
+    0.924
+   ],
+   "p_is": 0.8771,
+   "pf_wf": 1.038,
+   "p_wf": 0.602,
+   "p_wf_holm": 1.0,
+   "wf_thetas_chosen": [
+    50.0,
+    50.0,
+    50.0,
+    40.0,
+    15.0,
+    15.0,
+    15.0,
+    15.0,
+    15.0,
+    15.0,
+    15.0,
+    15.0,
+    15.0,
+    15.0,
+    15.0,
+    15.0,
+    15.0,
+    15.0
+   ],
+   "is_stats": {
+    "net_usd_1NQ": -19430.0,
+    "trades": 115,
+    "win_rate": 0.635,
+    "max_dd_usd_1NQ": 37408.0,
+    "worst_month": [
+     "2024-07",
+     -18277.0
+    ],
+    "longest_losing_streak": 4
+   },
+   "wf_stats": {
+    "net_usd_1NQ": 6347.0,
+    "trades": 82,
+    "win_rate": 0.622,
+    "max_dd_usd_1NQ": 30019.0,
+    "worst_month": [
+     "2026-11",
+     -15754.0
+    ],
+    "longest_losing_streak": 4
+   },
+   "wf_log_return": 0.0147,
+   "benchmark_wf_log_return": -0.0332,
+   "benchmark_wf_stats": {
+    "net_usd_1NQ": -14417.0,
+    "trades": 198,
+    "win_rate": 0.545,
+    "max_dd_usd_1NQ": 60300.0,
+    "worst_month": [
+     "2026-11",
+     -32509.0
+    ],
+    "longest_losing_streak": 7
+   },
+   "gates": {
+    "G1_in_sample": false,
+    "G2_is_permutation_p<0.01": false,
+    "G3_walk_forward_PF>1": true,
+    "G4_wf_permutation_p<0.05": false
+   },
+   "extra_checks": {
+    "holm_adjusted_p_wf<0.05": false,
+    "beats_intraday_buy_hold_after_costs": true,
+    "wf_trades>=20": true
+   },
+   "passes_all": false
+  },
+  {
+   "name": "BULL_PDH_BREAK",
+   "regime": "BULLISH",
+   "why": "Clearing yesterday's high in an uptrend triggers stops and breakout buying; trapped shorts pay.",
+   "grid": [
+    0.0,
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8
+   ],
+   "plateau_theta_IS": 0.8,
+   "rho_plateau": 0.81,
+   "pf_is_plateau": 1.372,
+   "pf_is_by_theta": [
+    0.988,
+    0.993,
+    1.064,
+    1.005,
+    1.085,
+    1.215,
+    1.201,
+    1.282,
+    1.461
+   ],
+   "p_is": 0.2078,
+   "pf_wf": 1.026,
+   "p_wf": 0.6169,
+   "p_wf_holm": 1.0,
+   "wf_thetas_chosen": [
+    0.8,
+    0.8,
+    0.8,
+    0.0,
+    0.0,
+    0.7,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "is_stats": {
+    "net_usd_1NQ": 16903.0,
+    "trades": 28,
+    "win_rate": 0.679,
+    "max_dd_usd_1NQ": 14117.0,
+    "worst_month": [
+     "2024-10",
+     -6275.0
+    ],
+    "longest_losing_streak": 3
+   },
+   "wf_stats": {
+    "net_usd_1NQ": 11167.0,
+    "trades": 87,
+    "win_rate": 0.54,
+    "max_dd_usd_1NQ": 38607.0,
+    "worst_month": [
+     "2025-07",
+     -12656.0
+    ],
+    "longest_losing_streak": 6
+   },
+   "wf_log_return": 0.0098,
+   "benchmark_wf_log_return": -0.0332,
+   "benchmark_wf_stats": {
+    "net_usd_1NQ": -14417.0,
+    "trades": 198,
+    "win_rate": 0.545,
+    "max_dd_usd_1NQ": 60300.0,
+    "worst_month": [
+     "2026-11",
+     -32509.0
+    ],
+    "longest_losing_streak": 7
+   },
+   "gates": {
+    "G1_in_sample": true,
+    "G2_is_permutation_p<0.01": false,
+    "G3_walk_forward_PF>1": true,
+    "G4_wf_permutation_p<0.05": false
+   },
+   "extra_checks": {
+    "holm_adjusted_p_wf<0.05": false,
+    "beats_intraday_buy_hold_after_costs": true,
+    "wf_trades>=20": true
+   },
+   "passes_all": false
+  },
+  {
+   "name": "FLAT_Z_FADE",
+   "regime": "FLAT",
+   "why": "In a range, stretched moves away from the 20-bar mean revert; liquidity takers overshooting pay.",
+   "grid": [
+    1.0,
+    1.2,
+    1.4,
+    1.6,
+    1.8,
+    2.0,
+    2.2,
+    2.4,
+    2.6
+   ],
+   "plateau_theta_IS": 1.8,
+   "rho_plateau": 0.54,
+   "pf_is_plateau": 1.051,
+   "pf_is_by_theta": [
+    0.961,
+    0.983,
+    0.907,
+    1.034,
+    1.025,
+    1.094,
+    1.026,
+    1.006,
+    0.893
+   ],
+   "p_is": 0.7053,
+   "pf_wf": 1.203,
+   "p_wf": 0.199,
+   "p_wf_holm": 1.0,
+   "wf_thetas_chosen": [
+    1.8,
+    1.8,
+    1.8,
+    1.8,
+    2.0,
+    2.0,
+    2.2,
+    2.2,
+    2.6,
+    2.6,
+    2.6,
+    2.6,
+    2.6,
+    2.6,
+    2.6,
+    2.6,
+    2.6,
+    2.6
+   ],
+   "is_stats": {
+    "net_usd_1NQ": 1812.0,
+    "trades": 30,
+    "win_rate": 0.533,
+    "max_dd_usd_1NQ": 15711.0,
+    "worst_month": [
+     "2024-12",
+     -1329.0
+    ],
+    "longest_losing_streak": 4
+   },
+   "wf_stats": {
+    "net_usd_1NQ": 21629.0,
+    "trades": 49,
+    "win_rate": 0.612,
+    "max_dd_usd_1NQ": 12206.0,
+    "worst_month": [
+     "2026-09",
+     -4112.0
+    ],
+    "longest_losing_streak": 3
+   },
+   "wf_log_return": 0.045,
+   "benchmark_wf_log_return": 0.0161,
+   "benchmark_wf_stats": {
+    "net_usd_1NQ": 2314.0,
+    "trades": 162,
+    "win_rate": 0.543,
+    "max_dd_usd_1NQ": 42527.0,
+    "worst_month": [
+     "2026-07",
+     -30477.0
+    ],
+    "longest_losing_streak": 7
+   },
+   "gates": {
+    "G1_in_sample": true,
+    "G2_is_permutation_p<0.01": false,
+    "G3_walk_forward_PF>1": true,
+    "G4_wf_permutation_p<0.05": false
+   },
+   "extra_checks": {
+    "holm_adjusted_p_wf<0.05": false,
+    "beats_intraday_buy_hold_after_costs": true,
+    "wf_trades>=20": true
+   },
+   "passes_all": false
+  },
+  {
+   "name": "FLAT_RSI_FADE",
+   "regime": "FLAT",
+   "why": "In a range, short-term RSI extremes revert both ways; momentum chasers at the edge pay.",
+   "grid": [
+    5.0,
+    10.0,
+    15.0,
+    20.0,
+    25.0,
+    30.0,
+    35.0,
+    40.0,
+    45.0
+   ],
+   "plateau_theta_IS": 40.0,
+   "rho_plateau": 0.87,
+   "pf_is_plateau": 1.086,
+   "pf_is_by_theta": [
+    0.622,
+    0.839,
+    0.874,
+    0.946,
+    0.994,
+    1.033,
+    1.099,
+    1.069,
+    1.089
+   ],
+   "p_is": 0.6224,
+   "pf_wf": 1.164,
+   "p_wf": 0.1144,
+   "p_wf_holm": 1.0,
+   "wf_thetas_chosen": [
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    45.0,
+    45.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    10.0,
+    5.0
+   ],
+   "is_stats": {
+    "net_usd_1NQ": 11931.0,
+    "trades": 111,
+    "win_rate": 0.586,
+    "max_dd_usd_1NQ": 26624.0,
+    "worst_month": [
+     "2025-02",
+     -10520.0
+    ],
+    "longest_losing_streak": 4
+   },
+   "wf_stats": {
+    "net_usd_1NQ": 23724.0,
+    "trades": 109,
+    "win_rate": 0.541,
+    "max_dd_usd_1NQ": 16054.0,
+    "worst_month": [
+     "2026-09",
+     -8506.0
+    ],
+    "longest_losing_streak": 6
+   },
+   "wf_log_return": 0.053,
+   "benchmark_wf_log_return": 0.0161,
+   "benchmark_wf_stats": {
+    "net_usd_1NQ": 2314.0,
+    "trades": 162,
+    "win_rate": 0.543,
+    "max_dd_usd_1NQ": 42527.0,
+    "worst_month": [
+     "2026-07",
+     -30477.0
+    ],
+    "longest_losing_streak": 7
+   },
+   "gates": {
+    "G1_in_sample": true,
+    "G2_is_permutation_p<0.01": false,
+    "G3_walk_forward_PF>1": true,
+    "G4_wf_permutation_p<0.05": false
+   },
+   "extra_checks": {
+    "holm_adjusted_p_wf<0.05": false,
+    "beats_intraday_buy_hold_after_costs": true,
+    "wf_trades>=20": true
+   },
+   "passes_all": false
+  },
+  {
+   "name": "FLAT_PDR_FADE",
+   "regime": "FLAT",
+   "why": "In a range, pokes beyond yesterday's high/low fail; breakout traders pay.",
+   "grid": [
+    0.0,
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8
+   ],
+   "plateau_theta_IS": 0.8,
+   "rho_plateau": 0.0,
+   "pf_is_plateau": 0.892,
+   "pf_is_by_theta": [
+    0.832,
+    0.83,
+    0.791,
+    0.779,
+    0.718,
+    0.798,
+    0.826,
+    0.861,
+    0.923
+   ],
+   "p_is": 0.7982,
+   "pf_wf": 1.148,
+   "p_wf": 0.2438,
+   "p_wf_holm": 1.0,
+   "wf_thetas_chosen": [
+    0.8,
+    0.8,
+    0.8,
+    0.8,
+    0.8,
+    0.8,
+    0.8,
+    0.8,
+    0.8,
+    0.8,
+    0.8,
+    0.8,
+    0.8,
+    0.8,
+    0.8,
+    0.6,
+    0.4,
+    0.4
+   ],
+   "is_stats": {
+    "net_usd_1NQ": -5486.0,
+    "trades": 32,
+    "win_rate": 0.406,
+    "max_dd_usd_1NQ": 20638.0,
+    "worst_month": [
+     "2025-02",
+     -8701.0
+    ],
+    "longest_losing_streak": 4
+   },
+   "wf_stats": {
+    "net_usd_1NQ": 29487.0,
+    "trades": 87,
+    "win_rate": 0.552,
+    "max_dd_usd_1NQ": 22626.0,
+    "worst_month": [
+     "2026-07",
+     -10193.0
+    ],
+    "longest_losing_streak": 6
+   },
+   "wf_log_return": 0.059,
+   "benchmark_wf_log_return": 0.0161,
+   "benchmark_wf_stats": {
+    "net_usd_1NQ": 2314.0,
+    "trades": 162,
+    "win_rate": 0.543,
+    "max_dd_usd_1NQ": 42527.0,
+    "worst_month": [
+     "2026-07",
+     -30477.0
+    ],
+    "longest_losing_streak": 7
+   },
+   "gates": {
+    "G1_in_sample": false,
+    "G2_is_permutation_p<0.01": false,
+    "G3_walk_forward_PF>1": true,
+    "G4_wf_permutation_p<0.05": false
+   },
+   "extra_checks": {
+    "holm_adjusted_p_wf<0.05": false,
+    "beats_intraday_buy_hold_after_costs": true,
+    "wf_trades>=20": true
+   },
+   "passes_all": false
+  },
+  {
+   "name": "BEAR_OPEN_DRIVE",
+   "regime": "BEARISH",
+   "why": "Weak first hour in a downtrend continues into the close; late longs liquidating pay.",
+   "grid": [
+    0.0,
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8
+   ],
+   "plateau_theta_IS": 0.0,
+   "rho_plateau": 0.16,
+   "pf_is_plateau": 1.025,
+   "pf_is_by_theta": [
+    1.15,
+    0.9,
+    0.935,
+    0.891,
+    0.697,
+    0.521,
+    0.417,
+    0.007,
+    0.007
+   ],
+   "p_is": 0.6723,
+   "pf_wf": 0.0,
+   "p_wf": 1.0,
+   "p_wf_holm": 1.0,
+   "wf_thetas_chosen": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.3,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "is_stats": {
+    "net_usd_1NQ": 7007.0,
+    "trades": 12,
+    "win_rate": 0.5,
+    "max_dd_usd_1NQ": 18515.0,
+    "worst_month": [
+     "2025-03",
+     -5199.0
+    ],
+    "longest_losing_streak": 5
+   },
+   "wf_stats": {
+    "net_usd_1NQ": 0.0,
+    "trades": 0,
+    "win_rate": null,
+    "max_dd_usd_1NQ": 0.0,
+    "worst_month": [
+     "2025-06",
+     0.0
+    ],
+    "longest_losing_streak": 0
+   },
+   "wf_log_return": 0.0,
+   "benchmark_wf_log_return": 0.0,
+   "benchmark_wf_stats": {
+    "net_usd_1NQ": 0.0,
+    "trades": 0,
+    "win_rate": null,
+    "max_dd_usd_1NQ": 0.0,
+    "worst_month": [
+     "2025-06",
+     0.0
+    ],
+    "longest_losing_streak": 0
+   },
+   "gates": {
+    "G1_in_sample": false,
+    "G2_is_permutation_p<0.01": false,
+    "G3_walk_forward_PF>1": false,
+    "G4_wf_permutation_p<0.05": false
+   },
+   "extra_checks": {
+    "holm_adjusted_p_wf<0.05": false,
+    "beats_intraday_buy_hold_after_costs": false,
+    "wf_trades>=20": false
+   },
+   "passes_all": false
+  },
+  {
+   "name": "BEAR_PDL_BREAK",
+   "regime": "BEARISH",
+   "why": "Losing yesterday's low in a downtrend triggers long stops; trapped longs pay.",
+   "grid": [
+    0.0,
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8
+   ],
+   "plateau_theta_IS": 0.0,
+   "rho_plateau": 0.0,
+   "pf_is_plateau": 0.992,
+   "pf_is_by_theta": [
+    0.992,
+    0.992,
+    0.992,
+    0.992,
+    0.992,
+    0.992,
+    0.992,
+    0.992,
+    0.992
+   ],
+   "p_is": 0.6164,
+   "pf_wf": 0.0,
+   "p_wf": 1.0,
+   "p_wf_holm": 1.0,
+   "wf_thetas_chosen": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "is_stats": {
+    "net_usd_1NQ": -857.0,
+    "trades": 8,
+    "win_rate": 0.5,
+    "max_dd_usd_1NQ": 16846.0,
+    "worst_month": [
+     "2025-03",
+     -5199.0
+    ],
+    "longest_losing_streak": 2
+   },
+   "wf_stats": {
+    "net_usd_1NQ": 0.0,
+    "trades": 0,
+    "win_rate": null,
+    "max_dd_usd_1NQ": 0.0,
+    "worst_month": [
+     "2025-06",
+     0.0
+    ],
+    "longest_losing_streak": 0
+   },
+   "wf_log_return": 0.0,
+   "benchmark_wf_log_return": 0.0,
+   "benchmark_wf_stats": {
+    "net_usd_1NQ": 0.0,
+    "trades": 0,
+    "win_rate": null,
+    "max_dd_usd_1NQ": 0.0,
+    "worst_month": [
+     "2025-06",
+     0.0
+    ],
+    "longest_losing_streak": 0
+   },
+   "gates": {
+    "G1_in_sample": false,
+    "G2_is_permutation_p<0.01": false,
+    "G3_walk_forward_PF>1": false,
+    "G4_wf_permutation_p<0.05": false
+   },
+   "extra_checks": {
+    "holm_adjusted_p_wf<0.05": false,
+    "beats_intraday_buy_hold_after_costs": false,
+    "wf_trades>=20": false
+   },
+   "passes_all": false
+  },
+  {
+   "name": "BEAR_RALLY_FADE",
+   "regime": "BEARISH",
+   "why": "Short-term rallies inside a downtrend get sold; short-covering buyers pay.",
+   "grid": [
+    45.0,
+    50.0,
+    55.0,
+    60.0,
+    65.0,
+    70.0,
+    75.0,
+    80.0,
+    85.0
+   ],
+   "plateau_theta_IS": 85.0,
+   "rho_plateau": 0.87,
+   "pf_is_plateau": 1.227,
+   "pf_is_by_theta": [
+    0.876,
+    0.873,
+    0.746,
+    0.761,
+    1.123,
+    0.992,
+    1.178,
+    1.262,
+    1.193
+   ],
+   "p_is": 0.4785,
+   "pf_wf": 0.0,
+   "p_wf": 1.0,
+   "p_wf_holm": 1.0,
+   "wf_thetas_chosen": [
+    85.0,
+    85.0,
+    85.0,
+    85.0,
+    85.0,
+    85.0,
+    85.0,
+    85.0,
+    85.0,
+    85.0,
+    85.0,
+    85.0,
+    45.0,
+    45.0,
+    45.0,
+    45.0,
+    45.0,
+    45.0
+   ],
+   "is_stats": {
+    "net_usd_1NQ": 5720.0,
+    "trades": 10,
+    "win_rate": 0.5,
+    "max_dd_usd_1NQ": 11564.0,
+    "worst_month": [
+     "2024-06",
+     0.0
+    ],
+    "longest_losing_streak": 3
+   },
+   "wf_stats": {
+    "net_usd_1NQ": 0.0,
+    "trades": 0,
+    "win_rate": null,
+    "max_dd_usd_1NQ": 0.0,
+    "worst_month": [
+     "2025-06",
+     0.0
+    ],
+    "longest_losing_streak": 0
+   },
+   "wf_log_return": 0.0,
+   "benchmark_wf_log_return": 0.0,
+   "benchmark_wf_stats": {
+    "net_usd_1NQ": 0.0,
+    "trades": 0,
+    "win_rate": null,
+    "max_dd_usd_1NQ": 0.0,
+    "worst_month": [
+     "2025-06",
+     0.0
+    ],
+    "longest_losing_streak": 0
+   },
+   "gates": {
+    "G1_in_sample": false,
+    "G2_is_permutation_p<0.01": false,
+    "G3_walk_forward_PF>1": false,
+    "G4_wf_permutation_p<0.05": false
+   },
+   "extra_checks": {
+    "holm_adjusted_p_wf<0.05": false,
+    "beats_intraday_buy_hold_after_costs": false,
+    "wf_trades>=20": false
+   },
+   "passes_all": false
+  }
+ ]
+}
